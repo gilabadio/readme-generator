@@ -117,7 +117,7 @@ const questions = () =>{
               },
             ],
           },
-          {
+        {
             type: 'input',
             name: 'user',
             message: 'Type in your github username',
@@ -129,9 +129,11 @@ const questions = () =>{
                 return false;
               }
             }
-            {
+        },
+        
+        {
                 type: 'input',
-                name: 'user',
+                name: 'email',
                 message: 'Type in your email address',
                 validate: nameInput => {
                   if  (nameInput) {
@@ -140,15 +142,15 @@ const questions = () =>{
                     console.log("Please typer in your email aaddress !");
                     return false;
                   }
-                }  
-
+                }
+        }
       ]);
 };
 questions().then((answers) =>{
     console.log(answers);
 
     var template = markDown(answers);
-    writeToFile("name.md", template);
+    writeToFile("generated.md", template);
 });
 
 // function to write README file
