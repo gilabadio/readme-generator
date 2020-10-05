@@ -38,7 +38,7 @@ const questions = () =>{
         {
             type: 'input',
             name: 'install',
-            message: 'Enter your how you can install your project (Required)',
+            message: 'Enter how you can install your project (Required)',
             validate: nameInput => {
               if  (nameInput) {
                 return true;
@@ -51,7 +51,7 @@ const questions = () =>{
         {
             type: 'input',
             name: 'usage',
-            message: 'Enter your Usage (Required)',
+            message: 'Enter your project is used (Required)',
             validate: nameInput => {
               if  (nameInput) {
                 return true;
@@ -138,7 +138,7 @@ questions().then((answers) =>{
     console.log(answers);
 
     var template = markDown(answers);
-    writeToFile("genrated.md", template);
+    writeToFile("generated.md", template);
 });
 
 // function to write README file
