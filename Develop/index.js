@@ -1,3 +1,11 @@
+const fs = require("fs");
+
+
+const inquirer = require("inquirer");
+
+
+const markDown = require("./Develop/utils/generateMarkdown.js");
+
 // array of questions for user
 const questions = () =>{
     return inquirer.prompt([
@@ -27,6 +35,19 @@ const questions = () =>{
             }
           } 
         },
+        {
+            type: 'input',
+            name: 'install',
+            message: 'Enter your how you can install your project (Required)',
+            validate: nameInput => {
+              if  (nameInput) {
+                return true;
+              } else {
+                console.log("Please provide instructions on how to install!");
+                return false;
+              }
+            } 
+          },
         {
             type: 'input',
             name: 'usage',
@@ -96,13 +117,48 @@ const questions = () =>{
               },
             ],
           },
+          {
+            type: 'input',
+            name: 'user',
+            message: 'Type in your github username',
+            validate: nameInput => {
+              if  (nameInput) {
+                return true;
+              } else {
+                console.log("Please typer in your github username !");
+                return false;
+              }
+            }
+            {
+                type: 'input',
+                name: 'user',
+                message: 'Type in your email address',
+                validate: nameInput => {
+                  if  (nameInput) {
+                    return true;
+                  } else {
+                    console.log("Please typer in your email aaddress !");
+                    return false;
+                  }
+                }  
 
       ]);
 };
+questions().then((answers) =>{
+    console.log(answers);
 
+    var template = markDown(answers);
+    writeToFile("name.md", template);
+});
 
 // function to write README file
 function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, function (err) {
+        if (err) {
+          return console.log(err);
+        }
+        return console.log("success");
+      });
 }
 
 

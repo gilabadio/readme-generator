@@ -6,6 +6,21 @@ function generateMarkdown(data) {
   ${data.description}
 
   ##Installation
+  ${data.install}
+
+  ##Usage
+  ${data.usage}
+
+  ##Credits
+  ${data.credits}
+
+  ##License
+  ${data.license}
+
+  ##Questions
+  [${date.user}](https://github.com/${data.user})
+  ${data.email}
+
 `;
 }
 
