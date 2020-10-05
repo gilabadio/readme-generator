@@ -30,7 +30,7 @@ function generateMarkdown(data) {
   ${data.license}
 
   ## Questions
-  [${data.user}](https://github.com/${data.user})
+  [Github](https://github.com/${data.user})
   ${data.email}
 
 `;
